@@ -1,0 +1,130 @@
+  const products = [
+    {
+      name: "Product 1",
+      price: "AED",
+      image1:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_45264679_v-neck.jpg",
+      image2:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_119308984_baloon-1.jpeg",
+    },
+    {
+      name: "Product 2",
+      price: "AED",
+      image1:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_132346123_band-3.jpg",
+      image2:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_213042083_band-1.jpg",
+    },
+    {
+      name: "Product 3",
+      price: "AED",
+      image1:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_216311611_birthday-balloon.jpg",
+      image2:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_250291671_Brouchers1.jpg",
+    },
+    {
+      name: "Product 4",
+      price: "AED",
+      image1:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_310109724_xxryaarbzvy5z9xv1yth.jpg",
+      image2:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_340529325_Mint-T-Shirt-119.jpg",
+    },
+    {
+      name: "Product 5",
+      price: "AED",
+      image1:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_447467849_BusinessCard2.jpg",
+      image2:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_640085725_tote-bag-3.jpg",
+    },
+    {
+      name: "Product 6",
+      price: "AED",
+      image1:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_694780622_Create-T-Shirt-1.jpg",
+      image2:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_769436024_t-shirt-m-script-cotton-tee-wra74780x-22298-t-shirt-wilson-6259-22-B.jpg",
+    },
+    {
+      name: "Product 7",
+      price: "AED",
+      image1:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_836164184_Brouchers-main-image.png",
+      image2:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_972250436_paper-1.jpg",
+    },
+    {
+      name: "Product 8",
+      price: "AED",
+      image1:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_986098060_tote-bag-4.jpg",
+      image2:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_1058289029_bag-2.jpg",
+    },
+    {
+      name: "Product 9",
+      price: "AED",
+      image1:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_1088057636_bag-1.jpg",
+      image2:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_1131049849_band-2.jpg",
+    },
+    {
+      name: "Product 9",
+      price: "AED",
+      image1:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_1265892940_blue-t-shirt.jpg",
+      image2:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_1268430321_r.jpg",
+    },
+    {
+      name: "Product 10",
+      price: "AED",
+      image1:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_1338512586_tote-bag-2.jpg",
+      image2:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_1350481079_v-neck-1.jpg",
+    },
+    {
+      name: "Product 10",
+      price: "AED",
+      image1:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_1364021668_360_F_441530590_RlvbscbvgByCuZqBPPy4HLve3IfkEbYQ.jpg",
+      image2:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_1422802689_baloon-2.jpg",
+    },
+    {
+      name: "Product 11",
+      price: "AED",
+      image1:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_1595399601_blue-t-shirt-2.png",
+      image2:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_1611311046_6c8cfc43396d4671ab27b4ee3224e81e.jpeg",
+    },
+    {
+      name: "Product 12",
+      price: "AED",
+      image1:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_1667541144_ra7n1ki5.jpg",
+      image2:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_1717960998_paper-2.jpg",
+    },
+    {
+      name: "Product 13",
+      price: "AED",
+      image1:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_1737187738_band-4.png",
+      image2:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_1930586327_baloon3.jpg",
+    },
+    {
+      name: "Product 14",
+      price: "AED",
+      image1:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_2099869897_BusinessCard1.jpg",
+      image2:
+        "https://itginnovators.com/CreativePrints/BackendStyle/img/products/0_1_2109765370_tote-bag-1.png",
+    },
+  ];
