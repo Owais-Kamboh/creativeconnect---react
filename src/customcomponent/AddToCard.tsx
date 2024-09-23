@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Header } from './header';
 import { Header2 } from './header2';
 import { Footer1 } from './Footer1';
@@ -6,7 +6,7 @@ import { Footer1 } from './Footer1';
 const Cart = () => {
   const [quantity, setQuantity] = useState(1);
 
-  const handleQuantityChange = (change: number) => {
+  const handleQuantityChange = (change: number) => { 
     if (quantity + change >= 1) {
       setQuantity(quantity + change);
     }
