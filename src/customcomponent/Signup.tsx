@@ -1,26 +1,45 @@
 import { Icon } from "@iconify/react/dist/iconify.js"; 
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
+
 export const Signup = () => {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState(""); // Separate state for email
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (event:any) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-
-    if (username.trim() === "" || password.trim() === "") {
-      alert("Please fill in both fields.");
+    if (username.trim() === "" || email.trim() === "" || password.trim() === "") {
+      alert("Please fill in all fields.");
       return;
     }
 
+    // Prepare data to send
+    const userData = {
+      userName: username,
+      userEmail: email,
+      userEmailPassword: password,
+    };
 
-    navigate("/login");
+    try {
+      const response = await axios.post("https://ecommerce-ap-is.vercel.app/users/signup", userData);
+      if (response.status === 201) {
+        // Optionally handle successful signup (e.g., show a success message)
+        alert("Registration successful!");
+        navigate("/login"); // Redirect to login page after successful signup
+      }
+    } catch (error) {
+      console.error("Error during signup:", error);
+      alert("Signup failed. Please try again."); // Handle error appropriately
+    }
   };
+
   return (
     <>
-      <div className="w-1/2 sm:w-1/3 md:w-1/6  pt-4 pl-4 ">
+      <div className="w-1/2 sm:w-1/3 md:w-1/6 pt-4 pl-4 ">
         <img
           src="https://itginnovators.com/CreativePrints/BackendStyle/logo/logo.png"
           alt="Logo"
@@ -79,26 +98,28 @@ export const Signup = () => {
                   id="email"
                   name="email"
                   required={true}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={email} // Updated to use email state
+                  onChange={(e) => setEmail(e.target.value)} // Update email state on change
                   className="mt-1 block w-full p-1 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-red-900 focus:border-transparent"
                 />
               </div>
             </div>
-            {/* City and Mobile Number */}
+            {/* Password and Mobile Number */}
             <div className="flex flex-wrap justify-between">
               <div className="w-full md:w-[48%]">
                 <label
-                  htmlFor="city"
+                  htmlFor="password"
                   className="block text-xs font-medium text-gray-500"
                 >
-                  City <span className="text-red-500">*</span>
+                  Password <span className="text-red-500">*</span>
                 </label>
                 <input
-                  type="text"
-                  id="city"
-                  name="city"
+                  type="password"
+                  id="password" // Updated id for password input
+                  name="password"
                   required={true}
+                  value={password} // Bind password state
+                  onChange={(e) => setPassword(e.target.value)} // Update password state on change
                   className="mt-1 block w-full p-1 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-red-900 focus:border-transparent"
                 />
               </div>
@@ -115,7 +136,6 @@ export const Signup = () => {
                   name="mobile"
                   required={true}
                   className="mt-1 block w-full p-1 border border-gray-300 focus:outline-none focus:ring-1 focus:ring-red-900 focus:border-transparent"
-                  pattern="\+971\d{9}"
                 />
               </div>
             </div>
@@ -136,12 +156,13 @@ export const Signup = () => {
             </div>
             <div className="flex flex-col md:flex-row items-center justify-end space-x-0 md:space-x-2 space-y-2 md:space-y-0">
               <p className="text-sm">Have an account?</p>
-              <Link to="/login"><button
-                type="button"
-                className="px-6 py-2 bg-gray-600 text-white font-medium hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 underline text-sm"
-              >
-                Login
-              </button>
+              <Link to="/login">
+                <button
+                  type="button"
+                  className="px-6 py-2 bg-gray-600 text-white font-medium hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 underline text-sm"
+                >
+                  Login
+                </button>
               </Link>
               <button
                 type="submit"
@@ -151,16 +172,20 @@ export const Signup = () => {
               </button>
             </div>
           </form>
+
+          {/* OR Divider */}
           <div className="flex items-center justify-center w-full pt-8">
             <div className="border-t border-gray-300 flex-grow" />
             <span className="mx-2 text-gray-500 text-sm font-medium">OR</span>
             <div className="border-t border-gray-300 flex-grow" />
           </div>
+
+          {/* Social Media Icons */}
           <div className="flex flex-row items-center justify-center w-full mt-6 gap-4">
-            <Icon icon="devicon:facebook" width="24" height="24" />
-            <Icon icon="skill-icons:twitter" width="24" height="24" />
-            <Icon icon="skill-icons:gmail-light" width="24" height="24" />
-            <Icon icon="skill-icons:instagram" width="24" height="24" />
+            <Icon icon="devicon:facebook" width={24} height={24} />
+            <Icon icon="skill-icons:twitter" width={24} height={24} />
+            <Icon icon="skill-icons:gmail-light" width={24} height={24} />
+            <Icon icon="skill-icons:instagram" width={24} height={24} />
           </div>
         </div>
       </div>
