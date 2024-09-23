@@ -5,7 +5,7 @@ import { Signup } from "@/customcomponent/Signup";
 import { NotFound } from "@/404";
 import { AboutUs } from "@/customcomponent/AboutUs";
 import { ContactUs } from "@/customcomponent/ContactUs";
-import { DetailedProduct } from "@/customcomponent/DetailedProduct";
+import  DetailedProduct  from "@/customcomponent/DetailedProduct";
 import Cart from "@/customcomponent/AddToCard";
 export const Routing = () => {
   return (
