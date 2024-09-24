@@ -1,38 +1,67 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
+  const [isLoading, setIsLoading] = useState(false);
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     if (username.trim() === "" || password.trim() === "") {
       alert("Please fill in both fields.");
       return;
     }
-
+    
     // Prepare data to send
     const loginData = {
       userEmail: username,
       userEmailPassword: password,
     };
+    setIsLoading(true);
 
     try {
       const response = await axios.post("https://ecommerce-ap-is.vercel.app/users/login", loginData);
+      
       if (response.status === 201) {
         // Optionally handle successful login (e.g., store user data, token, etc.)
-        alert("Login successful!");
-        navigate("/"); // Redirect to home page after successful login
+        Swal.fire({
+          title: "Login successful!",
+          icon: "success",
+          timer: 2000, // Auto-dismiss after 1 second
+          timerProgressBar: true, // Show progress bar
+          willClose: () => {
+            navigate("/"); // Redirect to home page after the alert closes
+          }
+        });
+        // navigate("/"); // Redirect to home page after successful login
+        console.log(response)
+        localStorage.setItem("token", response.data.authToken);
+        console.log(localStorage.getItem("token"),"authToken" ) 
+        
       }
     } catch (error) {
       console.error("Error during login:", error);
-      alert("Login failed. Please check your credentials and try again."); // Handle error appropriately
+      Swal.fire({
+        title: "Login failed",
+        text: "Please check your credentials and try again.",
+        icon: "error",
+        timer: 2000, // Auto-dismiss after 1 second
+        timerProgressBar: true, // Show progress bar
+        
+      });
+    }
+    finally {
+      setIsLoading(false);
     }
   };
+
+ 
+
+
+
+
 
   return (
     <>
@@ -103,7 +132,7 @@ export const Login = () => {
               type="submit"
               className="w-full md:w-auto flex items-center justify-center h-10 bg-red-800 text-white font-medium hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-sm md:px-[40%]"
             >
-              Login
+              {isLoading ? "Loading..." : "Login"}
             </button>
           </form>
         </div>

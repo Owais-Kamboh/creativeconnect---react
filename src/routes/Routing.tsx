@@ -7,10 +7,12 @@ import { AboutUs } from "@/customcomponent/AboutUs";
 import { ContactUs } from "@/customcomponent/ContactUs";
 import  DetailedProduct  from "@/customcomponent/DetailedProduct";
 import Cart from "@/customcomponent/AddToCard";
+import { ProductUpload } from "@/customcomponent/ProductUpload";
 export const Routing = () => {
   return (
     <>
     <Routes>
+        <Route path="/productupload" element={<ProductUpload/>}/>
         <Route path="/" element={<Home/>}/>
         <Route path="/aboutus" element={<AboutUs/>}/>
         <Route path="/contactus" element={<ContactUs/>}/>
