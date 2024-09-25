@@ -26,6 +26,10 @@ export const Login = () => {
       
       if (response.status === 201) {
         // Optionally handle successful login (e.g., store user data, token, etc.)
+        // navigate("/"); // Redirect to home page after successful login
+        console.log(response)
+        localStorage.setItem("authToken", response.data.authToken);
+        console.log(localStorage.getItem("authToken"),"authToken" ) 
         Swal.fire({
           title: "Login successful!",
           icon: "success",
@@ -35,10 +39,6 @@ export const Login = () => {
             navigate("/"); // Redirect to home page after the alert closes
           }
         });
-        // navigate("/"); // Redirect to home page after successful login
-        console.log(response)
-        localStorage.setItem("token", response.data.authToken);
-        console.log(localStorage.getItem("token"),"authToken" ) 
         
       }
     } catch (error) {
