@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 import { ResponsiveHeader } from "./responsiveheader";
 import { Link } from "react-router-dom";
 
-export const Header2 = () => {
+export const Header2 = ({ setSelectedCategory }: { setSelectedCategory: (category: string) => void }) => {
 
   return (
     <>
@@ -17,11 +17,14 @@ export const Header2 = () => {
 
         {/* SEARCH BAR */}
         <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white w-[50%] py-1">
-          <select className="pl-4 pr-8 py-2 bg-transparent text-gray-500 font-medium text-sm focus:outline-none">
-            <option>All Categories</option>
-            <option>All Categories</option>
-            <option>All Categories</option>
-            <option>All Categories</option>
+          <select className="pl-4 pr-8 py-2 bg-transparent text-gray-500 font-medium text-sm focus:outline-none" name="brandName" onChange={(e) => setSelectedCategory(e.target.value)} >
+            <option value="allCategories">All Categories</option>
+            <option value="Clothing & Apparels">ClothingApparels</option>
+            <option value="Paper Bag">PaperBags</option>
+            <option value="Brochures & Booklets">Brochures & Booklets</option>
+            <option value="Promotional Items">Promotional Items</option>
+            <option value="Bags & Bagpacks">BagBackPacks</option>
+            <option value="Business Cards">BussinesCard</option>  
           </select>
 
           <div className="h-6 w-px bg-gray-300"></div>

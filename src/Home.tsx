@@ -9,7 +9,7 @@ import { Blogs2 } from './customcomponent/Blogs2'
 import { Footer1 } from './customcomponent/Footer1'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import { useState } from 'react'
 export const Home = () => {
   const navigate = useNavigate();
   useEffect(() => {
@@ -18,14 +18,17 @@ export const Home = () => {
       navigate("/login")
     }
   }, [])  
+
+  const [products, setProducts] = useState([]);  // Rename data to products
+  const [selectedCategory, setSelectedCategory] = useState("All Categories");
   return (
     <>
-    <Header/>
-      <Header2/>
+      <Header/>
+      <Header2 setSelectedCategory={setSelectedCategory}/>
       <Carousel1/>
       <Carousel2/>
       <Section1/>
-      <Cardcc/>
+      <Cardcc  selectedCategory={selectedCategory} products={products} setProducts={setProducts}/>
       <Blogs/>
       <Blogs2/>
       <Footer1/>

@@ -33,7 +33,7 @@ export const Login = () => {
         Swal.fire({
           title: "Login successful!",
           icon: "success",
-          timer: 2000, // Auto-dismiss after 1 second
+          timer: 3000, // Auto-dismiss after 1 second
           timerProgressBar: true, // Show progress bar
           willClose: () => {
             navigate("/"); // Redirect to home page after the alert closes

@@ -1,9 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Header } from "./header";
-import { Header2 } from "./header2";
 import { Footer1 } from "./Footer1";
+import { NavbarComponent } from "./NavbarComponent";
 
 const DetailedProduct = () => {
   const { id } = useParams(); // Get the product ID from the URL
@@ -58,8 +57,7 @@ const DetailedProduct = () => {
 
   return (
     <>
-    <Header />
-    <Header2 />
+    <NavbarComponent/>
     <div className="container mx-auto py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Product Image */}

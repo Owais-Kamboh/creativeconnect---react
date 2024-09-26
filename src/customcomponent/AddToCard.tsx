@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { Header } from './header';
-import { Header2 } from './header2';
 import { Footer1 } from './Footer1';
+import { NavbarComponent } from './NavbarComponent';
 
 const Cart = () => {
   const [quantity, setQuantity] = useState(1);
@@ -20,8 +19,7 @@ const Cart = () => {
 
   return (
     <>
-      <Header />
-      <Header2 />
+      <NavbarComponent />
     <div className="container mx-auto py-8">
       <h2 className="text-2xl font-semibold mb-6 text-gray-500">Shopping Cart</h2>
       
