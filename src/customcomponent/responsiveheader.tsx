@@ -58,21 +58,20 @@ export const ResponsiveHeader = () => {
                 />
                 <span
                   style={{
-                    fontSize: "0.7em",
+                    fontSize: "0.5em",
                     position: "absolute",
-                    top: "-10px",
-                    right: "-10px",
+                    top: "-13px",
+                    right: "-6px",
                     backgroundColor: "black",
-                    borderRadius: "100%",
-                    width: "15px",
-                    height: "15px",
+                    width: "36px",
+                    height: "12px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     color: "white",
                   }}
                 >
-                  0
+                  Admin
                 </span>
               </span>
             </Link>
@@ -84,24 +83,7 @@ export const ResponsiveHeader = () => {
                 height="28"
                 style={{ color: "black" }}
               />
-              <span
-                style={{
-                  fontSize: "0.7em",
-                  position: "absolute",
-                  top: "-10px",
-                  right: "-10px",
-                  backgroundColor: "black",
-                  borderRadius: "100%",
-                  width: "15px",
-                  height: "15px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "white",
-                }}
-              >
-                0
-              </span>
+             
             </span>
             <Link to="/addtocart">
               <span style={{ position: "relative", display: "inline-block" }}>
@@ -111,24 +93,7 @@ export const ResponsiveHeader = () => {
                   height="28"
                   style={{ color: "black" }}
                 />
-                <span
-                  style={{
-                    fontSize: "0.7em",
-                    position: "absolute",
-                    top: "-10px",
-                    right: "-10px",
-                    backgroundColor: "black",
-                    borderRadius: "100%",
-                    width: "15px",
-                    height: "15px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "white",
-                  }}
-                >
-                  0
-                </span>
+               
               </span>
             </Link>
           </div>

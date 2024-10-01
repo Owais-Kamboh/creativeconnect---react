@@ -81,7 +81,7 @@ export const ProductUpload = () => {
     <NavbarCc/>
       <h1 className="container mx-auto font-medium text-zinc-900  text-5xl text-center pt-2 ">
         UpLoad Product
-      </h1>
+      </h1><br />
       <form onSubmit={handleSubmit} className="container mx-auto">
         <label
           htmlFor="user-id"

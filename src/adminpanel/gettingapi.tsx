@@ -29,10 +29,11 @@ const navigate = useNavigate();
   return (
       <>
       <NavbarCc/>
-      <div className="container mx-auto p-6  grid grid-cols-3 gap-4">
+      <div className="container mx-auto p-6 grid grid-cols-1 md:grid-cols-3
+ gap-4">
      {data.map((card:any,index)=>  (
 
-  <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white  border border-gray-300 hover:shadow-lg transition-transform transform hover:scale-105" key={index}>
+  <div className="mx-auto w-[100%] max-w-sm rounded overflow-hidden shadow-lg bg-white  border border-gray-300 hover:shadow-lg transition-transform transform hover:scale-105" key={index}>
     <img
       className="w-full h-48 object-contain"
       src={card.productImage}
