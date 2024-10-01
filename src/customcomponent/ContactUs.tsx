@@ -2,14 +2,15 @@
 import { Footer1 } from "./Footer1";
 import { Icon } from "@iconify/react";
 import { useEffect } from "react";
-import { NavbarComponent } from "./NavbarComponent";
+import { NavbarComponent } from './NavbarComponent';
+
 export const ContactUs = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
       }, []);
   return (
     <>
-      <NavbarComponent />
+<NavbarComponent/>
       <div className="relative w-full h-[149px]">
         <div className="bg-[url('https://img.freepik.com/free-photo/group-marketing-experts-background_1409-7449.jpg?t=st=1726899316~exp=1726902916~hmac=9ed5ceb6fa6d31d12950721c2cc6781b5c17c4df0c51ae00f006f7c555c6aa57&w=900')] w-full h-[200px] object-contain bg-center bg-no-repeat bg-cover relative">
           <div className="absolute inset-0 bg-black bg-opacity-65 text-white text-center pt-12">

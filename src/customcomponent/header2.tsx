@@ -2,8 +2,16 @@ import { Icon } from "@iconify/react";
 import { ResponsiveHeader } from "./responsiveheader";
 import { Link } from "react-router-dom";
 
-export const Header2 = ({ setSelectedCategory }: { setSelectedCategory: (category: string) => void }) => {
+export const Header2 = () => {
 
+
+
+  // const handleSearch = () => {
+  //   const searchResult = products.filter((item) =>
+  //     item.name.toLowerCase().includes(searchValue.toLowerCase())
+  //   );
+  //   setFilteredData(searchResult);
+  // };
   return (
     <>
       {/* For screens larger than 1440px */}
@@ -17,7 +25,7 @@ export const Header2 = ({ setSelectedCategory }: { setSelectedCategory: (categor
 
         {/* SEARCH BAR */}
         <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white w-[50%] py-1">
-          <select className="pl-4 pr-8 py-2 bg-transparent text-gray-500 font-medium text-sm focus:outline-none" name="brandName" onChange={(e) => setSelectedCategory(e.target.value)} >
+          <select className="pl-4 pr-8 py-2 bg-transparent text-gray-500 font-medium text-sm focus:outline-none" name="brandName" >
             <option value="allCategories">All Categories</option>
             <option value="Clothing & Apparels">ClothingApparels</option>
             <option value="Paper Bag">PaperBags</option>
@@ -33,9 +41,10 @@ export const Header2 = ({ setSelectedCategory }: { setSelectedCategory: (categor
             type="text"
             placeholder="I'm searching for..."
             className="py-2 px-4 flex-grow focus:outline-none text-gray-600 text-sm"
+            
           />
           <span className="pr-1">
-            <button className="bg-red-800 text-white text-sm py-2 px-10 rounded-full">
+            <button className="bg-red-800 text-white text-sm py-2 px-10 rounded-full" >
               Search
             </button>
           </span>
@@ -43,30 +52,22 @@ export const Header2 = ({ setSelectedCategory }: { setSelectedCategory: (categor
 
         {/* ICONS RIGHT SIDE */}
         <div className="flex items-center gap-4 mr-8">
-          <Link to="/login">
-          <span style={{ position: 'relative', display: 'inline-block' }}>
-            <Icon
-              icon="carbon:user"
-              width="28"
-              height="28"
-              style={{ color: "black" }}
-            />
-            <span style={{
-              fontSize: '0.7em',
-              position: 'absolute',
-              top: '-10px',
-              right: '-10px',
-              backgroundColor: 'black',
-              borderRadius: '100%',
-              width: '15px',
-              height: '15px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'white'
-            }}>0</span>
-          </span>
-          </Link>
+        <Link to="/login" target="_blank">
+      <span className="relative inline-block group">
+        <Icon
+          icon="carbon:user"
+          width="28"
+          height="28"
+          className="text-black"
+        />
+        
+        
+        {/* Popup Text */}
+        <span className="absolute bottom-full right-0 mb-2 bg-black text-white text-xs rounded px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          Admin Panel
+        </span>
+      </span>
+    </Link>
           <span style={{ position: 'relative', display: 'inline-block' }}>
             <Icon
               icon="ph:heart-light"
@@ -74,20 +75,7 @@ export const Header2 = ({ setSelectedCategory }: { setSelectedCategory: (categor
               height="28"
               style={{ color: "black" }}
             />
-            <span style={{
-              fontSize: '0.7em',
-              position: 'absolute',
-              top: '-10px',
-              right: '-10px',
-              backgroundColor: 'black',
-              borderRadius: '100%',
-              width: '15px',
-              height: '15px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'white'
-            }}>0</span>
+           
           </span>
           <Link to="/addtocart">
           <span style={{ position: 'relative', display: 'inline-block' }}>
@@ -97,20 +85,6 @@ export const Header2 = ({ setSelectedCategory }: { setSelectedCategory: (categor
               height="28"
               style={{ color: "black" }}
             />
-            <span style={{
-              fontSize: '0.7em',
-              position: 'absolute',
-              top: '-10px',
-              right: '-10px',
-              backgroundColor: 'black',
-              borderRadius: '100%',
-              width: '15px',
-              height: '15px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'white'
-            }}>0</span>
           </span>
           </Link>
         </div>

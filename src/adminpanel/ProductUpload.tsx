@@ -11,7 +11,9 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-
+import NavbarCc from "@/adminpanel/Navbarcc";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 export const ProductUpload = () => {
   const [formData, setFormData] = useState({
     brandName: "",
@@ -67,9 +69,16 @@ export const ProductUpload = () => {
       console.error("Error:", error);
     }
   };
-
+  const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    if (localStorage.getItem("authToken") == undefined) {    
+      navigate("/login")
+    }
+  }, [])  
   return (
     <>
+    <NavbarCc/>
       <h1 className="container mx-auto font-medium text-zinc-900  text-5xl text-center pt-2 ">
         UpLoad Product
       </h1>

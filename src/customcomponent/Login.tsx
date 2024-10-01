@@ -36,7 +36,7 @@ export const Login = () => {
           timer: 3000, // Auto-dismiss after 1 second
           timerProgressBar: true, // Show progress bar
           willClose: () => {
-            navigate("/"); // Redirect to home page after the alert closes
+            navigate("/edit"); // Redirect to home page after the alert closes
           }
         });
         

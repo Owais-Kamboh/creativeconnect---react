@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Footer1 } from "./Footer1";
+
+import Swal from "sweetalert2";
 import { NavbarComponent } from "./NavbarComponent";
 
 const DetailedProduct = () => {
@@ -24,6 +26,13 @@ const DetailedProduct = () => {
 
   const fetchProduct = async () => {
     try {
+      Swal.fire({
+        title: "Loading...",
+        html: "Please wait while we process your request.",
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
       const res = await axios.get(
         `https://ecommerce-ap-is.vercel.app/products/getProducts/${id}` // Adjust API endpoint
       );
@@ -34,9 +43,9 @@ const DetailedProduct = () => {
       console.log("Error fetching product:", error);
     } finally {
       setLoading(false);
+      Swal.close();
     }
   };
-
   useEffect(() => {
     fetchProduct();
   }, [id]);
@@ -44,7 +53,6 @@ const DetailedProduct = () => {
   if (loading) {
     return <p>Loading...</p>;
   }
-
   if (!product) {
     return <p>Product not found</p>;
   }
@@ -57,7 +65,7 @@ const DetailedProduct = () => {
 
   return (
     <>
-    <NavbarComponent/>
+   <NavbarComponent/>
     <div className="container mx-auto py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Product Image */}

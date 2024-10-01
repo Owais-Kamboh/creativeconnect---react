@@ -19,7 +19,7 @@ const Cart = () => {
 
   return (
     <>
-      <NavbarComponent />
+    <NavbarComponent />
     <div className="container mx-auto py-8">
       <h2 className="text-2xl font-semibold mb-6 text-gray-500">Shopping Cart</h2>
       

@@ -16,10 +16,7 @@ export const Cardcc = ({ selectedCategory, products, setProducts }: { selectedCa
   //     productDescription: "",
   //   },
   // ]);
- // Filter products based on the selected category
- const filteredProducts = selectedCategory === "All Categories"
- ? products
- : products.filter((item) => item.brandName === selectedCategory);
+
   // const [isHovered, setIsHovered] = useState(false);
   const fetchData = async () => {
       try {
@@ -39,7 +36,7 @@ export const Cardcc = ({ selectedCategory, products, setProducts }: { selectedCa
     <>
       <div className=" container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         
-        {filteredProducts.map((item:any, index) => {
+        {data.map((item:any, index) => {
           
           return (
             <Link to={`/product/${item._id}`} key={index}> {/* Link to the details page */}

@@ -1,7 +1,22 @@
-import {useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-export const Cardcc = ({ selectedCategory, products, setProducts }: { selectedCategory: string; products: any[], setProducts: any }) => {
+import { useState } from "react";
+
+type Products = {
+  _id: string;
+  brandName: string;
+  productTitle: string;
+  size: string;
+  productImage: string;
+  productPrice: string;
+  productColor: string;
+  productRating: string;
+  productCategory: string;
+  productDescription: string;
+};
+
+export const Cardcc = () => {
   // const [data, setData] = useState([
   //   {
   //     _id: "",
@@ -16,10 +31,7 @@ export const Cardcc = ({ selectedCategory, products, setProducts }: { selectedCa
   //     productDescription: "",
   //   },
   // ]);
- // Filter products based on the selected category
- const filteredProducts = selectedCategory === "All Categories"
- ? products
- : products.filter((item) => item.brandName === selectedCategory);
+const [products, setProducts] = useState<Products[]>([]);
   // const [isHovered, setIsHovered] = useState(false);
   const fetchData = async () => {
       try {
@@ -37,38 +49,36 @@ export const Cardcc = ({ selectedCategory, products, setProducts }: { selectedCa
   useEffect(() => {fetchData()},[]);
   return (
     <>
-      <div className=" container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        
-        {filteredProducts.map((item:any, index) => {
-          
-          return (
-            <Link to={`/product/${item._id}`} key={index}> {/* Link to the details page */}
-            <div className="w-full h-full container mx-auto py-4 text-center" key={index}>
-              <div className="relative flex items-center justify-center">
-                <div
-                  
-                  style={{
-                    backgroundImage: 
-                       `url( ${item.productImage})`,
-                      // : `url( ${item.image1})`,
-                    backgroundSize: "contain",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                    transition: "background-image 0.3s ease-in-out",
-                    width: "300px",
-                    height: "280px",
-                  }}
-                  // onMouseEnter={() => setIsHovered(true)}
-                  // onMouseLeave={() => setIsHovered(false)}
-                ></div>
-              </div>
-              <h4 className="text-base">{item.productTitle}</h4>
-              <p className="text-[#950507] text-base">AED   {item.productPrice}</p>
-            </div>
-        </Link>
-          );
-        })}
-      </div>
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+  {products.map((item, index) => {
+    return (
+      <Link to={`/product/${item._id}`} key={index}> {/* Link to the details page */}
+        <div
+          className="w-full h-full container mx-auto py-4 text-center transform transition-transform duration-300 hover:scale-105"
+          key={index}
+        >
+          <div className="relative flex items-center justify-center">
+            <div
+              style={{
+                backgroundImage: `url(${item.productImage})`,
+                backgroundSize: "contain",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                transition: "background-image 0.3s ease-in-out, transform 0.3s ease",
+                width: "300px",
+                height: "280px",
+              }}
+              className="hover:scale-110 transition-transform duration-300 ease-in-out"
+            ></div>
+          </div>
+          <h4 className="text-base mt-2">{item.productTitle}</h4>
+          <p className="text-[#950507] text-base">AED {item.productPrice}</p>
+        </div>
+      </Link>
+    );
+  })}
+</div>
+
     </>
   );
 };
