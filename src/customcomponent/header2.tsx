@@ -7,32 +7,32 @@ export const Header2 = () => {
   const [itemCount, setItemCount] = useState<number>(0);
 
   const updateItemCount = () => {
-    const storedProducts = localStorage.getItem("products");
-    if (storedProducts) {
-      const productsArray = JSON.parse(storedProducts);
-      // Calculate total item count
-      const totalCount = productsArray.reduce((acc: number, item: { quantity: number }) => acc + item.quantity, 0);
-      setItemCount(totalCount);
-    } else {
-      setItemCount(0);
-    }
+      const storedProducts = localStorage.getItem("products");
+      if (storedProducts) {
+          const productsArray = JSON.parse(storedProducts);
+          // Calculate total item count
+          
+          setItemCount(productsArray.length);
+      } else {
+          setItemCount(0);
+      }
   };
 
   useEffect(() => {
-    // Initial count when component mounts
-    updateItemCount();
-
-    // Listen for cart changes
-    const handleCartChange = () => {
+      // Initial count when component mounts
       updateItemCount();
-    };
 
-    window.addEventListener("cartChanged", handleCartChange);
+      // Listen for cart changes
+      const handleCartChange = () => {
+          updateItemCount();
+      };
 
-    // Cleanup listener on component unmount
-    return () => {
-      window.removeEventListener("cartChanged", handleCartChange);
-    };
+      window.addEventListener("cartChanged", handleCartChange);
+
+      // Cleanup listener on component unmount
+      return () => {
+          window.removeEventListener("cartChanged", handleCartChange);
+      };
   }, []);
 
   return (

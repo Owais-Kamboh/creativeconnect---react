@@ -72,11 +72,13 @@ const DetailedProduct = () => {
       image: product.productImage,
       title: product.productTitle,
       quantity: quantity,
-      price: product.productPrice,
+      price: parseFloat(product.productPrice), // Ensure price is a number
     };
 
     // Retrieve existing products from local storage
     const existingProducts: Array<{ id: string; quantity: number }> = JSON.parse(localStorage.getItem('products') || '[]');
+    
+    // Check if the product is already in the cart
     const productIndex = existingProducts.findIndex((item) => item.id === productData.id);
 
     if (productIndex !== -1) {
@@ -89,10 +91,18 @@ const DetailedProduct = () => {
 
     // Save the updated array back to local storage
     localStorage.setItem('products', JSON.stringify(existingProducts));
-
-    // Dispatch the custom cart changed event
+    
+    // Dispatch the custom cart changed event for header update
     window.dispatchEvent(new Event('cartChanged'));
+
+    Swal.fire({
+      title: "Product added to cart!",
+      icon: "success",
+      timer: 1500,
+      showConfirmButton: false,
+    });
   };
+
 
   return (
     <>
@@ -140,7 +150,7 @@ const DetailedProduct = () => {
               {/* Add to Cart Button */}
               <button
                 className="ml-4 px-6 py-2 bg-gray-800 text-white font-normal hover:bg-gray-600"
-                onClick={handleClick}
+                onClick={()=>{handleClick();}}
               >
                 ADD TO CART
               </button>
