@@ -7,7 +7,7 @@ export const NavbarComponent = () => {
   return (
     <>
     <Header/>
-    <Header2/>
+    <Header2 />
     
     </>
   )

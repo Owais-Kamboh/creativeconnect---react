@@ -7,13 +7,11 @@ function App() {
   return (
     <>
     <div className="App">
-      <BrowserRouter>       
+      <BrowserRouter>      
          <Routing />
        </BrowserRouter>
        </div>
-       {/* <ProductUpload/> */}
      
-
 
     </>
   )

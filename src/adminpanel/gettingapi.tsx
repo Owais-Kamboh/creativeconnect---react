@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import NavbarCc from './Navbarcc';
 import { useNavigate } from 'react-router-dom';
+
 export const GettingApi = () => {
 
 const [data, setData] = useState([]);
@@ -26,8 +27,12 @@ const navigate = useNavigate();
       navigate("/login")
     }
   }, [])  
+
+
+
   return (
       <>
+
       <NavbarCc/>
       <div className="container mx-auto p-6 grid grid-cols-1 md:grid-cols-3
  gap-4">

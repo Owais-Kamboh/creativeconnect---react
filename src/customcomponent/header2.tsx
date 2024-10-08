@@ -1,20 +1,42 @@
 import { Icon } from "@iconify/react";
 import { ResponsiveHeader } from "./responsiveheader";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export const Header2 = () => {
+  const [itemCount, setItemCount] = useState<number>(0);
 
+  const updateItemCount = () => {
+    const storedProducts = localStorage.getItem("products");
+    if (storedProducts) {
+      const productsArray = JSON.parse(storedProducts);
+      // Calculate total item count
+      const totalCount = productsArray.reduce((acc: number, item: { quantity: number }) => acc + item.quantity, 0);
+      setItemCount(totalCount);
+    } else {
+      setItemCount(0);
+    }
+  };
 
+  useEffect(() => {
+    // Initial count when component mounts
+    updateItemCount();
 
-  // const handleSearch = () => {
-  //   const searchResult = products.filter((item) =>
-  //     item.name.toLowerCase().includes(searchValue.toLowerCase())
-  //   );
-  //   setFilteredData(searchResult);
-  // };
+    // Listen for cart changes
+    const handleCartChange = () => {
+      updateItemCount();
+    };
+
+    window.addEventListener("cartChanged", handleCartChange);
+
+    // Cleanup listener on component unmount
+    return () => {
+      window.removeEventListener("cartChanged", handleCartChange);
+    };
+  }, []);
+
   return (
     <>
-      {/* For screens larger than 1440px */}
       <div className="hidden xl:flex w-screen pt-4 justify-between items-center text-white body-font container mx-auto">
         <div className="w-[17%] h-[17%]">
           <img
@@ -25,14 +47,14 @@ export const Header2 = () => {
 
         {/* SEARCH BAR */}
         <div className="flex items-center border border-gray-300 rounded-full overflow-hidden bg-white w-[50%] py-1">
-          <select className="pl-4 pr-8 py-2 bg-transparent text-gray-500 font-medium text-sm focus:outline-none" name="brandName" >
+          <select className="pl-4 pr-8 py-2 bg-transparent text-gray-500 font-medium text-sm focus:outline-none" name="brandName">
             <option value="allCategories">All Categories</option>
-            <option value="Clothing & Apparels">ClothingApparels</option>
-            <option value="Paper Bag">PaperBags</option>
+            <option value="Clothing & Apparels">Clothing & Apparels</option>
+            <option value="Paper Bag">Paper Bags</option>
             <option value="Brochures & Booklets">Brochures & Booklets</option>
             <option value="Promotional Items">Promotional Items</option>
-            <option value="Bags & Bagpacks">BagBackPacks</option>
-            <option value="Business Cards">BussinesCard</option>  
+            <option value="Bags & Backpacks">Bags & Backpacks</option>
+            <option value="Business Cards">Business Cards</option>
           </select>
 
           <div className="h-6 w-px bg-gray-300"></div>
@@ -41,10 +63,9 @@ export const Header2 = () => {
             type="text"
             placeholder="I'm searching for..."
             className="py-2 px-4 flex-grow focus:outline-none text-gray-600 text-sm"
-            
           />
           <span className="pr-1">
-            <button className="bg-red-800 text-white text-sm py-2 px-10 rounded-full" >
+            <button className="bg-red-800 text-white text-sm py-2 px-10 rounded-full">
               Search
             </button>
           </span>
@@ -52,22 +73,19 @@ export const Header2 = () => {
 
         {/* ICONS RIGHT SIDE */}
         <div className="flex items-center gap-4 mr-8">
-        <Link to="/login" target="_blank">
-      <span className="relative inline-block group">
-        <Icon
-          icon="carbon:user"
-          width="28"
-          height="28"
-          className="text-black"
-        />
-        
-        
-        {/* Popup Text */}
-        <span className="absolute bottom-full right-0 mb-2 bg-black text-white text-xs rounded px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          Admin Panel
-        </span>
-      </span>
-    </Link>
+          <Link to="/login" target="_blank">
+            <span className="relative inline-block group">
+              <Icon
+                icon="carbon:user"
+                width="28"
+                height="28"
+                className="text-black"
+              />
+              <span className="absolute bottom-full right-0 mb-2 bg-black text-white text-xs rounded px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Admin Panel
+              </span>
+            </span>
+          </Link>
           <span style={{ position: 'relative', display: 'inline-block' }}>
             <Icon
               icon="ph:heart-light"
@@ -75,17 +93,21 @@ export const Header2 = () => {
               height="28"
               style={{ color: "black" }}
             />
-           
           </span>
           <Link to="/addtocart">
-          <span style={{ position: 'relative', display: 'inline-block' }}>
-            <Icon
-              icon="carbon:shopping-cart"
-              width="28"
-              height="28"
-              style={{ color: "black" }}
-            />
-          </span>
+            <span className="relative inline-block">
+              <Icon
+                icon="carbon:shopping-cart"
+                width="28"
+                height="28"
+                className="text-black"
+              />
+              {itemCount > 0 && (
+                <span className="absolute top-[-10px] right-[-10px] bg-red-500 text-white rounded-full px-1 text-xs font-bold">
+                  {itemCount}
+                </span>
+              )}
+            </span>
           </Link>
         </div>
       </div>
@@ -111,13 +133,15 @@ export const Header2 = () => {
             <span className="text-sm px-2">SHOP BY CATEGORY</span>
           </button>
           <div className="ml-6 flex space-x-8 font-medium">
-           <Link to="/"><a href="#" className="text-sm">HOME</a></Link>
-            <a href="#" className="text-sm">BUDGET</a>
-            <a href="#" className="text-sm">LUXURY</a>
-            <a href="#" className="text-sm">PREMIUM</a>
-            <a href="#" className="text-sm">TECH</a>
-            <a href="#" className="text-sm">SUSTAINABLE</a>
-            <a href="#" className="text-sm">CORPORATE</a>
+            <Link to="/">
+              <span className="text-sm">HOME</span>
+            </Link>
+            <span className="text-sm">BUDGET</span>
+            <span className="text-sm">LUXURY</span>
+            <span className="text-sm">PREMIUM</span>
+            <span className="text-sm">TECH</span>
+            <span className="text-sm">SUSTAINABLE</span>
+            <span className="text-sm">CORPORATE</span>
           </div>
         </div>
         <div className="flex items-center pr-6 text-gray-700">
