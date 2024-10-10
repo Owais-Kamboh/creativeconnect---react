@@ -225,8 +225,8 @@ export const Footer1 = () => {
   </p>
   <ul className="flex justify-between items-center space-x-4">
     <li>Shop</li>
-    <Link to="/aboutus"><li>About Us</li></Link>
-    <Link to="/contactus"><li>Contact</li></Link> 
+    <Link to="/aboutus"><li className="hover:text-red-700">About Us</li></Link>
+    <Link to="/contactus"><li className="hover:text-red-700">Contact</li></Link> 
     <li>Blog</li>
   </ul>
 </div>

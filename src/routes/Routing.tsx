@@ -2,7 +2,7 @@ import { Routes,Route } from "react-router-dom";
 import { Home } from "../Home";
 import { Login } from "@/customcomponent/Login";
 import { Signup } from "@/customcomponent/Signup";
-import { NotFound } from "@/404";
+import { NotFound } from "@/routes/404";
 import { AboutUs } from "@/customcomponent/AboutUs";
 import { ContactUs } from "@/customcomponent/ContactUs";
 import  DetailedProduct  from "@/customcomponent/DetailedProduct";

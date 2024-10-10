@@ -7,7 +7,7 @@ import { Header2 } from './customcomponent/header2'
 import { Section1 } from './customcomponent/section1'
 import { Blogs2 } from './customcomponent/Blogs2'
 import { Footer1 } from './customcomponent/Footer1'
-import { useEffect} from 'react'
+import { useEffect,useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 export const Home = () => {
   const navigate = useNavigate();
@@ -17,15 +17,16 @@ export const Home = () => {
       navigate("/")
     }
   }, [])  
-
+  const [selectedCategory, setSelectedCategory] = useState<string>('allCategories');
+  
   return (
     <>
       <Header/>
-      <Header2/>
+      <Header2 onCategoryChange={setSelectedCategory} />
       <Carousel1/>
       <Carousel2/>
       <Section1/>
-      <Cardcc/>
+      <Cardcc selectedCategory={selectedCategory} />
       <Blogs/>
       <Blogs2/>
       <Footer1/>

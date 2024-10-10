@@ -6,7 +6,7 @@ import { Routing } from "./routes/Routing";
 function App() {
   return (
     <>
-    <div className="App">
+    <div className="App">     
       <BrowserRouter>      
          <Routing />
        </BrowserRouter>
